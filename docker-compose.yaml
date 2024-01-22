@@ -1,0 +1,31 @@
+version: "3"
+services:
+  
+  client:
+    depends_on:
+      - mongo
+      - backend
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports: 
+      - "80:80"
+    container_name: client
+
+  backend:
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_HOST=mongo
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: backend
+    
+  mongo:
+    image: mongo:latest
+    ports: 
+      - "27017:27017"
+    volumes:
+      - "./mongo-db:/data/db"
+    container_name: mongo

@@ -5,6 +5,12 @@
 	"email": "jackbalageru@yahoo.com",
 	"description": "",
 	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"server": "nodemon -L index.js",
+		"client": "npm start --prefix client",
+		"dev": "concurrently \"npm run server\" \"npm run client\""
+	  },
 	"dependencies": {
 		"axios": "^0.26.0",
 		"cors": "^2.8.5",
