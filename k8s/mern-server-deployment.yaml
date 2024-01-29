@@ -15,12 +15,7 @@ spec:
           ports:
             - containerPort: 8080
               name: nodejs-port
-          env:
-            - name: PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: configs
-                  key: PORT                  
+          env:                
             - name: MONGODB_URL
               valueFrom:
                 configMapKeyRef:
