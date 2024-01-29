@@ -5,10 +5,10 @@ const connection = require("./db");
 const crudRoutes = require("./routes/crudRoutes");
 
 const app = express();
-const PORT = process.env.PORT || 8080;
-
 // database connection
 connection();
+const PORT = process.env.PORT || 8080;
+
 
 // middleware
 app.use(express.urlencoded({ extended: true }));

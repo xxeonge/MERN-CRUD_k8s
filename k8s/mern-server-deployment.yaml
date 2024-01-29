@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mern-server-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mern-server
+    spec:
+      containers:
+        - name: mern-server
+          image: xeoyounglee/mern_crud:backend
+          ports:
+            - containerPort: 8080
+              name: nodejs-port
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: configs
+                  key: PORT                  
+            - name: MONGODB_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: configs
+                  key: MONGODB_URL
+            - name: MONGODB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: configs
+                  key: MONGODB_HOST
+  selector:
+    matchLabels:
+      app: mern-server
