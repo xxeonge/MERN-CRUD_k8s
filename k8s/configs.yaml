@@ -4,6 +4,5 @@ metadata:
   name: configs
 data:
   PORT: "8080"
-  CLIENT: localhost:80
   MONGODB_URL: mongodb://${mongodb-service}:27017/MERN
   MONGODB_HOST: mongodb-service
